@@ -1,0 +1,43 @@
+*
+    padding: 0px
+    margin: 0px
+    font-size: 10px
+
+#header
+    background-color: #FFCB05
+    .wrap
+        max-width: 1300px
+        margin: 0px auto
+        #menu
+            ul
+                display: flex
+                flex-direction: row
+                justify-content: space-around
+                align-items: center
+                margin: 0px auto
+                li
+                    min-width: 20%
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    height: 75px
+                    a
+                        font-size: 1.7em
+                        transition: all 300ms
+                        padding-top: 20%
+                        padding-bottom: 20%
+                        text-decoration: none
+                        font-weight: 300
+                        &:hover
+                            color: white
+                            transform: scale(1.05)
+                    img
+                        width: 30%
+                    .logo
+                        position: relative
+                        float: left
+                .menuSelected
+                    border-bottom: 5px solid #005572
+                    a
+                        transform: scale(1.08)
+                        color: white
