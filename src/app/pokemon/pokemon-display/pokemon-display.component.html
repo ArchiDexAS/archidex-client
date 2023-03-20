@@ -1,1 +1,123 @@
-<p>pokemon-display works!</p>
+<section id="display">
+    <div class="wrap">
+        <div id="form-container">
+            <form (ngSubmit)="onSubmit()">
+                <input type="text" placeholder="Nombre o código" name="search" [(ngModel)]="inputSearch">
+                <div>
+                    <button mat-button type="submit" id="button-search-pokemon" class="btn--search"><mat-icon class="icon">search</mat-icon></button>
+                </div>
+            </form>
+            <form (ngSubmit)="onRandomSubmit()">
+                <div>
+                    <button mat-button type="submit" id="button-search-random-pokemon" class="btn--random"><mat-icon class="icon">shuffle</mat-icon></button>
+                </div>
+            </form>
+        </div>
+        <div id="sprite-container">
+            <ng-container *ngIf="pokemon">
+                <h2>Normal</h2>
+                <hr>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.idPokedex}}.png" alt="">
+                <h2>Variocolor</h2>
+                <hr>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/{{pokemon.idPokedex}}.png" alt="">
+            </ng-container>
+        </div>
+        <div id="info-container">
+            <ng-container *ngIf="pokemon">
+                <div class="title-pokemon">
+                    <h1>{{pokemon.name}}</h1>
+                    <h2>#{{pokemon.idPokedex}}</h2>
+                </div>
+                <h3>{{pokemon.generation}} Generación</h3>
+                <p>{{pokemon.description}}</p>
+                <h3>Debilidades</h3>
+                <table>
+                    <tr>
+                        <td>(X4) Muy débil a:</td>
+                        <td>
+                            <ng-container *ngFor="let sW of sWeak">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{sW.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>(X2) Débil a:</td>
+                        <td>
+                            <ng-container *ngFor="let w of weak">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{w.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>(X1) Normal a:</td>
+                        <td>
+                            <ng-container *ngFor="let dN of dNormal">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{dN.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>(X1/2) Resistente a:</td>
+                        <td>
+                            <ng-container *ngFor="let r of res">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{r.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>(X1/4) Muy resistente a:</td>
+                        <td>
+                            <ng-container *ngFor="let sR of sRes">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{sR.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>(X0) Inmune a:</td>
+                        <td>
+                            <ng-container *ngFor="let i of inm">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{i.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                </table>
+                <h3>Fortalezas</h3>
+                <table>
+                    <tr>
+                        <td>(X2) Efectivo a:</td>
+                        <td>
+                            <ng-container *ngFor="let e of efc">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{e.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>(X1) Normal a:</td>
+                        <td>
+                            <ng-container *ngFor="let a of aNormal">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{a.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>(X1/2) Poco efectivo a:</td>
+                        <td>
+                            <ng-container *ngFor="let nE of nEfc">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{nE.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>(X0) Sin daño a:</td>
+                        <td>
+                            <ng-container *ngFor="let nD of nDam">
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{nD.name}}.png" alt="">
+                            </ng-container>
+                        </td>
+                    </tr>
+                </table>
+            </ng-container>
+        </div>
+    </div>
+</section>
