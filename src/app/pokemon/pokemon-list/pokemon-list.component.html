@@ -26,14 +26,14 @@
                 </tr>
                 <ng-container *ngIf="infoPoke">
                     <tr *ngFor="let poke of infoPoke">
-                        <td>{{poke.idPokedex}}</td>
-                        <td>
+                        <td [routerLink]="['/pokemon/display', poke.idPokedex]">{{poke.idPokedex}}</td>
+                        <td [routerLink]="['/pokemon/display', poke.idPokedex]">
                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{poke.idPokedex}}.png" alt="" class="sprite">
                         </td>
-                        <td>{{poke.name}}</td>
+                        <td [routerLink]="['/pokemon/display', poke.idPokedex]">{{poke.name}}</td>
                         <td>
                             <ng-container *ngFor="let type of poke.types">
-                                <a [routerLink]="['/pokemon/display', poke.idPokedex]"><img src="https://play.pokemonshowdown.com/sprites/types/{{type}}.png" alt="" class="type"></a>
+                                <img src="https://play.pokemonshowdown.com/sprites/types/{{type.name}}.png" alt="" class="type" (click)="typeList(type.idType)">
                             </ng-container>
                         </td>
                     </tr>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 import { Type } from 'src/app/model/type';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { Utils } from 'src/app/utils/utils';
@@ -28,7 +29,14 @@ export class HomeComponent implements OnInit {
   onSubmit(){
     if(this.inputSearch){
       if(isNaN(+this.inputSearch)){
-        // TO-DO NOT NUMBER
+        this.pokemonService.pokemonByName(this.inputSearch).pipe(
+          map(pok => pok.idPokedex)
+        ).subscribe({
+          next: poke => {
+          this.router.navigate(['pokemon/display', poke]);
+        }, error: (e) => {
+          this.router.navigate(['pokemon/list/name', this.inputSearch]);
+        }});
       }else{
         // TO-DO NUMBER
       }
@@ -37,8 +45,9 @@ export class HomeComponent implements OnInit {
 
   onRandomSubmit(){
     let randomPoke: number = this.utils.generateRandomNumber(1, 151);
-    console.log(randomPoke)
-    // TO-DO NUMBER
+    this.pokemonService.pokemonById(randomPoke).subscribe(poke => {
+      this.router.navigate(['pokemon/display', poke.idPokedex]);
+    });
   }
 
 }
