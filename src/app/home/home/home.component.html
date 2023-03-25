@@ -1,0 +1,22 @@
+<section id="home">
+    <div class="wrap">
+        <p>Bienvenido a la PokéDex de Arquitectura :D !</p>
+        <div id="form-container">
+            <form (ngSubmit)="onSubmit()">
+                <input type="text" placeholder="Nombre o código" name="search" [(ngModel)]="inputSearch">
+                <div>
+                    <button mat-button type="submit" id="button-search-pokemon" class="btn--search"><mat-icon class="icon">search</mat-icon></button>
+                </div>
+            </form>
+            <form (ngSubmit)="onRandomSubmit()">
+                <div>
+                    <button mat-button type="submit" id="button-search-random-pokemon" class="btn--random"><mat-icon class="icon">shuffle</mat-icon></button>
+                </div>
+            </form>
+        </div>
+        <select name="types" id="types" *ngIf="types" [(ngModel)]="selectedType">
+            <option value=""></option>
+            <option [ngValue]="type" *ngFor="let type of types">{{type.name}}</option>
+        </select>
+    </div>
+</section>

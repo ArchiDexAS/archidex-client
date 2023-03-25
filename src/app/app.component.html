@@ -1,0 +1,12 @@
+<header id="header">
+  <div class="wrap">
+    <nav id="menu">
+      <ul>
+        <li><a [routerLink]="['/home']"><img class="logo" src="../assets/icons/archidex.png"></a></li>
+        <li routerLink="menuSelected"><a [routerLink]="['pokemon/list']">Listado de Pokémon</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<router-outlet></router-outlet>
