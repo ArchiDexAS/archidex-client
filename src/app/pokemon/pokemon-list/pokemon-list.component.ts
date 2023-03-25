@@ -41,14 +41,13 @@ export class PokemonListComponent implements OnInit {
         });
         forkJoin(observables).subscribe(typesArray => {
           this.infoPoke = typesArray.map((types, index) => {
-            const poke = this.pokemon![index];
+            const poke: Pokemon = this.pokemon![index];
             return new Dtopoke(poke.idPokedex, poke.name, types);
           });
         });
         
       });
     }else{
-      // TO-DO Specific list
       if(this.filter == "type"){
         this.pokemonService.pokemonFromType(+this.value!).subscribe(pokes => {
           this.pokemon = pokes
@@ -99,14 +98,20 @@ export class PokemonListComponent implements OnInit {
           });
         }});
       }else{
-        // TO-DO NUMBER
+        this.pokemonService.pokemonById(+this.inputSearch).pipe(
+          map(pok => pok.idPokedex)
+        ).subscribe({
+          next: poke => {
+          this.router.navigate(['pokemon/display', poke]);
+        }, error: (e) => {
+          this.router.navigate(['home', this.inputSearch]);
+        }});
       }
     }
   }
 
   onRandomSubmit(){
     let randomPoke: number = this.utils.generateRandomNumber(1, 151);
-    // TO-DO NUMBER
     this.pokemonService.pokemonById(randomPoke).subscribe(poke => {
       this.router.navigate(['pokemon/display', poke.idPokedex]);
     });

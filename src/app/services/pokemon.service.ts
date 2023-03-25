@@ -20,7 +20,15 @@ export class PokemonService {
   constructor(private http: HttpClient) { }
 
   list(): Observable<Pokemon[]> {
-    return this.http.get<any>(`http://localhost:8000/api/getAllPokemons/`).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getAllPokemons/`).pipe(
+      map(datos => {
+      return datos.data;
+      })
+    );
+  }
+
+  listTypes(): Observable<Type[]>{
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getAllTypes/`).pipe(
       map(datos => {
       return datos.data;
       })
@@ -30,7 +38,7 @@ export class PokemonService {
   typesPokemon(id: number): Observable<Type[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idPokedex",id);
-    return this.http.get<any>(`http://127.0.0.1:8000/api/getTypesForPokemon/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getTypesForPokemon/`, {params: queryParams}).pipe(
       map(datos => {
       return datos.data;
       })
@@ -40,7 +48,7 @@ export class PokemonService {
   pokemonByName(name: string): Observable<Pokemon> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("name",name);
-    return this.http.get<any>(`http://127.0.0.1:8000/api/getPokemonByName/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonByName/`, {params: queryParams}).pipe(
       map(datos => {
       return datos.data;
       })
@@ -50,7 +58,7 @@ export class PokemonService {
   pokemonById(id: number): Observable<Pokemon> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idPokedex", id);
-    return this.http.get<any>(`http://127.0.0.1:8000/api/getPokemonById/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonById/`, {params: queryParams}).pipe(
       map(datos => {
       return datos.data;
       })
@@ -60,7 +68,7 @@ export class PokemonService {
   typeById(id: number): Observable<Type> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idType", id);
-    return this.http.get<any>(`http://127.0.0.1:8000/api/getTypeById/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getTypeById/`, {params: queryParams}).pipe(
       map(datos => {
       return datos.data;
       })
@@ -70,7 +78,7 @@ export class PokemonService {
   pokemonFromType(id: number): Observable<Pokemon[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idType", id);
-    return this.http.get<any>(`http://127.0.0.1:8000/api/getPokemonsFromType/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonsFromType/`, {params: queryParams}).pipe(
       map(datos => {
       return datos.data;
       })
@@ -80,7 +88,7 @@ export class PokemonService {
   pokemonFromWord(word: string): Observable<Pokemon[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("word", word);
-    return this.http.get<any>(`http://127.0.0.1:8000/api/getPokemonsFromWord/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonsFromWord/`, {params: queryParams}).pipe(
       map(datos => {
       return datos.data;
       })
@@ -90,7 +98,7 @@ export class PokemonService {
   strengthsPokemon(id: number): Observable<DtoTypevsType[]>{
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idPokedex", id);
-    return this.http.get<any>(`http://127.0.0.1:8000/api/getPokemonAttachDefenseData/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonAttachDefenseData/`, {params: queryParams}).pipe(
       map(datos => {
       return datos.attackData;
       })
@@ -100,7 +108,7 @@ export class PokemonService {
   weaknessPokemon(id: number): Observable<DtoTypevsType[]>{
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idPokedex", id);
-    return this.http.get<any>(`http://127.0.0.1:8000/api/getPokemonAttachDefenseData/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonAttachDefenseData/`, {params: queryParams}).pipe(
       map(datos => {
       return datos.defenseData;
       })

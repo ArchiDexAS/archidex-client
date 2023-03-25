@@ -44,7 +44,6 @@ export class PokemonDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      // TO-DO SEARCH FOR POKE INFO (FILL THE ARRAYS)
       this.pokemonService.pokemonById(+params.get('id')!).subscribe(poke => {
         this.pokemon = poke
         this.pokemonService.strengthsPokemon(this.pokemon.idPokedex).subscribe(strong => {
@@ -143,7 +142,14 @@ export class PokemonDisplayComponent implements OnInit {
           this.router.navigate(['pokemon/list/name', this.inputSearch]);
         }});
       }else{
-        // TO-DO NUMBER
+        this.pokemonService.pokemonById(+this.inputSearch).pipe(
+          map(pok => pok.idPokedex)
+        ).subscribe({
+          next: poke => {
+          this.router.navigate(['pokemon/display', poke]);
+        }, error: (e) => {
+          this.router.navigate(['home', this.inputSearch]);
+        }});
       }
     }
   }

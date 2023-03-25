@@ -35,8 +35,6 @@ export class PokeInterceptorInterceptor implements HttpInterceptor {
             });
             modEvent.body!['defenseData'] = Object.values(defenderId);
           }
-          
-          //console.log(modEvent)
           return modEvent;
         }
         return event;

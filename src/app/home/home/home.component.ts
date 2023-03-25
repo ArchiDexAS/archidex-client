@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+    this.pokemonService.listTypes().subscribe(types => {
+      this.types = types
+    })
   }
 
   onSubmit(){
@@ -38,7 +41,20 @@ export class HomeComponent implements OnInit {
           this.router.navigate(['pokemon/list/name', this.inputSearch]);
         }});
       }else{
-        // TO-DO NUMBER
+        this.pokemonService.pokemonById(+this.inputSearch).pipe(
+          map(pok => pok.idPokedex)
+        ).subscribe({
+          next: poke => {
+          this.router.navigate(['pokemon/display', poke]);
+        }, error: (e) => {
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['home', this.inputSearch]);
+          });
+        }});
+      }
+    }else{
+      if(this.selectedType){
+        this.router.navigate(['pokemon/list/type', this.selectedType.idType]);
       }
     }
   }
