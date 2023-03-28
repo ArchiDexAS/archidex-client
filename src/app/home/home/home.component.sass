@@ -3,74 +3,107 @@
     margin: 0px
     font-size: 10px
 
-@mixin center
-    position: absolute
-    top: 50%
-    left: 35%
-    margin: -25px 0 0 -25px
-
 #home
+    display: flex
+    align-items: center
+    justify-content: center
+    padding-top: 10%
     width: 100%
     .wrap
         max-width: 1300px
         margin: 0px auto
-        p
-            position: absolute
-            top: 30%
-            left: 25%
-            font-size: 2.7em
-            font-weight: 200
-            color: rgb(32, 32, 32)
-        select
-            position: absolute
-            top: 60%
-            left: 33.5%
-            width: 150px
-            height: 40px
-            margin: 0px
-            font-size: 1.7em
-            margin-bottom: 30px
-            border-radius: 3px
-            padding-left: 5px
-            border: 1px solid rgb(1, 1, 59)
-            color: black
-            option
-                font-size: 1.3em
-        #form-container
-            @include center
-            display: flex
-            flex-direction: row
-            form
+        #basic-container
+            border-radius: 15%
+            border: 2px solid #FFCB05
+            width: 80%
+            max-width: 800px
+            height: auto
+            margin: 0 auto
+            box-shadow: 2px #ebbd10
+            padding: 20px
+
+            @media screen and (min-width: 768px)
+                flex-direction: row
+                justify-content: space-between
+                padding: 40px
+
+            p + #form-container
+                margin-top: 20px
+
+            @media screen and (min-width: 768px)
+                p + #form-container
+                    margin-top: 40px
+
+            hr
+                margin: 10px 0
+                border: none
+                border-top: 1px solid #ebbd10
+
+            @media screen and (min-width: 768px)
+                hr
+                    margin: 20px 0
+
+            p
+                text-align: center
+                font-size: 2.5em
+                font-weight: 200
+                color: rgb(32, 32, 32)
+                margin-bottom: 20px
+
+                @media screen and (min-width: 768px)
+                    margin-bottom: 0
+            select
+                width: 100%
+                max-width: 250px
+                height: 40px
+                margin-bottom: 30px
+                border-radius: 3px
+                padding-left: 5px
+                border: 1px solid rgb(1, 1, 59)
+                color: black
+                font-size: 1.7em
+
+                @media screen and (min-width: 768px)
+                    margin-bottom: 0
+            #form-container
                 display: flex
                 flex-direction: row
-                padding-top: 5%
-                margin-left: 10px
-                input
-                    width: 250px
-                    height: 50px
-                    font-size: 1.7em
-                    text-align: center
-                    margin-bottom: 30px
-                    border-radius: 3px
-                    padding-left: 5px
-                    border: 1px solid rgb(1, 1, 59)
-                    color: black
-                    &::placeholder  
-                        color: #ccc
-                button
-                    width: 100%
-                    height: 50px
-                    border: none
-                    border-radius: 5px
-                    color: white
-                    padding: 10px
-                    margin-left: 10px
-                    &:hover
-                        transform: scale(1.08)
-                    .icon
-                        margin-top: 20px
-                        transform: scale(2.5)
-                button.btn--search
-                    background-color: #EE1515
-                button.btn--random
-                    background-color: #2A75BB
+                form
+                    display: flex
+                    flex-direction: row
+                    padding-top: 5%
+                    margin-bottom: 20px
+
+                    @media screen and (min-width: 768px)
+                        margin-bottom: 0
+                    input
+                        width: 100%
+                        max-width: 250px
+                        height: 50px
+                        font-size: 1.7em
+                        text-align: center
+                        margin-bottom: 30px
+                        border-radius: 3px
+                        padding-left: 5px
+                        border: 1px solid rgb(1, 1, 59)
+                        color: black
+                        &::placeholder
+                            color: #ccc
+                    button
+                        width: 100%
+                        max-width: 150px
+                        height: 50px
+                        border: none
+                        border-radius: 5px
+                        color: white
+                        padding: 10px
+                        margin-left: 10px
+                        &:hover
+                            transform: scale(1.08)
+                        .icon
+                            margin-top: 20px
+                            transform: scale(2.5)
+                    button.btn--search
+                        background-color: #EE1515
+                    button.btn--random
+                        background-color: #2A75BB

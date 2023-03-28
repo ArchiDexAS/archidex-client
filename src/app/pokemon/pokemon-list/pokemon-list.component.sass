@@ -5,12 +5,14 @@
 
 @mixin center
     position: absolute
-    top: 10%
-    left: 35%
+    top: 15%
+    left: 50%
+    transform: translate(-50%, -15%)
     margin: -25px 0 0 -25px
 
 #list
     width: 100%
+    padding-top: 10%
     .wrap
         max-width: 1300px
         margin: 0px auto
@@ -55,7 +57,7 @@
                     padding-left: 5px
                     border: 1px solid rgb(1, 1, 59)
                     color: black
-                    &::placeholder  
+                    &::placeholder
                         color: #ccc
                 button
                     width: 100%
@@ -77,7 +79,8 @@
         #table-container
             position: absolute
             top: 30%
-            left: 30%
+            left: 50%
+            transform: translate(-50%)
             table, th, td
                 border: 1px solid black
                 border-collapse: collapse
@@ -91,9 +94,13 @@
                 font-size: 1.4em
                 text-align: center
                 .sprite
-                    width: 7vw
-                    height: 7vh
+                    width: 100%
+                    height: auto
                     &:hover
                         transform: scale(1.08)
                 .type
+                    width: 35%
+                    height: auto
                     margin: 5px
+                    &:hover
+                        transform: scale(1.08)
