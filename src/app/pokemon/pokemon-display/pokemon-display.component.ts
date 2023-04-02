@@ -18,6 +18,8 @@ export class PokemonDisplayComponent implements OnInit {
 
   pokemon: Pokemon | undefined;
   types: Type[] | undefined;
+  pokeSprite: string | undefined;
+  shinySprite: string | undefined;
 
   // Weaknesses
   sWeak: DtoType[] = [];
@@ -46,6 +48,12 @@ export class PokemonDisplayComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.pokemonService.pokemonById(+params.get('id')!).subscribe(poke => {
         this.pokemon = poke
+        this.pokemonService.pokeImage(this.pokemon.idPokedex).subscribe(image => {
+          this.pokeSprite = image;
+        });
+        this.pokemonService.shinyImage(this.pokemon.idPokedex).subscribe(image => {
+          this.shinySprite = image;
+        });
         this.pokemonService.strengthsPokemon(this.pokemon.idPokedex).subscribe(strong => {
           this.joinStrengths(strong)
         });
@@ -64,15 +72,19 @@ export class PokemonDisplayComponent implements OnInit {
           const numValue = weakness.filter(wk => wk.attackerId==i).map(weakness => weakness.value).reduce(function (previous, current) {
             return previous * current;
         }, 1)
-          this.calculateWeakness(new DtoType(typ.idType, typ.name, numValue))
+          this.pokemonService.typeImage(typ.name).subscribe(url =>{
+            this.calculateWeakness(new DtoType(typ.idType, typ.name, numValue, url));
+          })
         });
       }
     }else{
       weakness.forEach(wk => {
        this.pokemonService.typeById(wk.attackerId).subscribe(type => {
-          this.calculateWeakness(new DtoType(type.idType, type.name, wk.value))
+          this.pokemonService.typeImage(type.name).subscribe(url =>{
+            this.calculateWeakness(new DtoType(type.idType, type.name, wk.value, url));
+          })
         })
-      })
+      });
     }
   }
 
@@ -83,13 +95,18 @@ export class PokemonDisplayComponent implements OnInit {
           const numValue = strengths.filter(st => st.defenderId==i).map(streng => streng.value).reduce(function (previous, current) {
             return previous * current;
         }, 1)
-          this.calculateStrengths(new DtoType(typ.idType, typ.name, numValue))
+        this.pokemonService.typeImage(typ.name).subscribe(url => {
+          this.calculateStrengths(new DtoType(typ.idType, typ.name, numValue, url))
+        });
+          
         });
       }
     }else{
       strengths.forEach(st => {
        this.pokemonService.typeById(st.defenderId).subscribe(type => {
-          this.calculateStrengths(new DtoType(type.idType, type.name, st.value))
+          this.pokemonService.typeImage(type.name).subscribe(url => {
+            this.calculateStrengths(new DtoType(type.idType, type.name, st.value, url))
+          });
         })
       })
     }

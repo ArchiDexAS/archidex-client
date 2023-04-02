@@ -33,7 +33,6 @@ export class PokemonListComponent implements OnInit {
       this.value = params.get('value')!;
     });
     if(!this.filter && !this.value){
-
       this.pokemonService.list().subscribe(pokes => {
         this.pokemon = pokes
         const observables = this.pokemon.map(poke => {
@@ -44,8 +43,8 @@ export class PokemonListComponent implements OnInit {
             const poke: Pokemon = this.pokemon![index];
             return new Dtopoke(poke.idPokedex, poke.name, types);
           });
-        });
-        
+          this.urlImages();
+        });  
       });
     }else{
       if(this.filter == "type"){
@@ -59,6 +58,7 @@ export class PokemonListComponent implements OnInit {
             const poke = this.pokemon![index];
             return new Dtopoke(poke.idPokedex, poke.name, types);
           });
+          this.urlImages();
         });
         });
       } else{
@@ -72,6 +72,7 @@ export class PokemonListComponent implements OnInit {
             const poke = this.pokemon![index];
             return new Dtopoke(poke.idPokedex, poke.name, types);
           });
+          this.urlImages();
         });
         });
       }
@@ -81,6 +82,19 @@ export class PokemonListComponent implements OnInit {
   public typeList(id: number){
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate(['pokemon/list/type', id]);
+    });
+  }
+
+  public urlImages(){
+    this.infoPoke.map(pokeTable =>{
+      this.pokemonService.pokeImage(pokeTable.idPokedex).subscribe(urlPkmn => {
+        pokeTable.urlPoke = urlPkmn
+      });
+      pokeTable.types.map(typeTable =>{
+        this.pokemonService.typeImage(typeTable.name).subscribe(urlType => {
+          typeTable.urlType = urlType;
+        });
+      });
     });
   }
 

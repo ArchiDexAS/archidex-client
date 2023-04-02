@@ -12,8 +12,8 @@ import { Type } from '../model/type';
 export class PokemonService {
 
   private httpOptions = {
-    headers : new HttpHeaders({
-      "Content-Type" : "application/json"
+    headers: new HttpHeaders({
+      "Content-Type": "application/json"
     })
   }
 
@@ -22,35 +22,35 @@ export class PokemonService {
   list(): Observable<Pokemon[]> {
     return this.http.get<any>(`http://10.43.101.95:8000/api/getAllPokemons/`).pipe(
       map(datos => {
-      return datos.data;
+        return datos.data;
       })
     );
   }
 
-  listTypes(): Observable<Type[]>{
+  listTypes(): Observable<Type[]> {
     return this.http.get<any>(`http://10.43.101.95:8000/api/getAllTypes/`).pipe(
       map(datos => {
-      return datos.data;
+        return datos.data;
       })
     );
   }
 
   typesPokemon(id: number): Observable<Type[]> {
     let queryParams = new HttpParams();
-    queryParams = queryParams.append("idPokedex",id);
-    return this.http.get<any>(`http://10.43.101.95:8000/api/getTypesForPokemon/`, {params: queryParams}).pipe(
+    queryParams = queryParams.append("idPokedex", id);
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getTypesForPokemon/`, { params: queryParams }).pipe(
       map(datos => {
-      return datos.data;
+        return datos.data;
       })
     );
   }
 
   pokemonByName(name: string): Observable<Pokemon> {
     let queryParams = new HttpParams();
-    queryParams = queryParams.append("name",name);
-    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonByName/`, {params: queryParams}).pipe(
+    queryParams = queryParams.append("name", name);
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonByName/`, { params: queryParams }).pipe(
       map(datos => {
-      return datos.data;
+        return datos.data;
       })
     );
   }
@@ -58,9 +58,9 @@ export class PokemonService {
   pokemonById(id: number): Observable<Pokemon> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idPokedex", id);
-    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonById/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonById/`, { params: queryParams }).pipe(
       map(datos => {
-      return datos.data;
+        return datos.data;
       })
     );
   }
@@ -68,9 +68,9 @@ export class PokemonService {
   typeById(id: number): Observable<Type> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idType", id);
-    return this.http.get<any>(`http://10.43.101.95:8000/api/getTypeById/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getTypeById/`, { params: queryParams }).pipe(
       map(datos => {
-      return datos.data;
+        return datos.data;
       })
     );
   }
@@ -78,40 +78,72 @@ export class PokemonService {
   pokemonFromType(id: number): Observable<Pokemon[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idType", id);
-    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonsFromType/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonsFromType/`, { params: queryParams }).pipe(
       map(datos => {
-      return datos.data;
+        return datos.data;
       })
     );
-  }  
+  }
 
   pokemonFromWord(word: string): Observable<Pokemon[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("word", word);
-    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonsFromWord/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonsFromWord/`, { params: queryParams }).pipe(
       map(datos => {
-      return datos.data;
-      })
-    );
-  }  
-
-  strengthsPokemon(id: number): Observable<DtoTypevsType[]>{
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("idPokedex", id);
-    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonAttachDefenseData/`, {params: queryParams}).pipe(
-      map(datos => {
-      return datos.attackData;
+        return datos.data;
       })
     );
   }
 
-  weaknessPokemon(id: number): Observable<DtoTypevsType[]>{
+  strengthsPokemon(id: number): Observable<DtoTypevsType[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("idPokedex", id);
-    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonAttachDefenseData/`, {params: queryParams}).pipe(
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonAttachDefenseData/`, { params: queryParams }).pipe(
       map(datos => {
-      return datos.defenseData;
+        return datos.attackData;
       })
     );
   }
+
+  weaknessPokemon(id: number): Observable<DtoTypevsType[]> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("idPokedex", id);
+    return this.http.get<any>(`http://10.43.101.95:8000/api/getPokemonAttachDefenseData/`, { params: queryParams }).pipe(
+      map(datos => {
+        return datos.defenseData;
+      })
+    );
+  }
+
+  pokeImage(id: number): Observable<string> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("idPokedex", id);
+    return this.http.get<any>(`http://10.43.101.95:8000/api/images/getPokemonImage/`, { params: queryParams }).pipe(
+      map(datos => {
+        return datos.url;
+      })
+    );
+  }
+
+  shinyImage(id: number): Observable<string> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("idPokedex", id);
+    return this.http.get<any>(`http://10.43.101.95:8000/api/images/getPokemonShinyImage/`, { params: queryParams }).pipe(
+      map(datos => {
+        return datos.url;
+      })
+    );
+  }
+
+  typeImage(type: string): Observable<string> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("typeName", type);
+    return this.http.get<any>(`http://10.43.101.95:8000/api/images/getTypeImage/`, { params: queryParams }).pipe(
+      map(datos => {
+        return datos.url;
+      })
+    );
+  }
+
 }
+
