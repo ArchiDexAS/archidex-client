@@ -14,13 +14,13 @@
             </form>
         </div>
         <div id="sprite-container">
-            <ng-container *ngIf="pokemon">
+            <ng-container *ngIf="pokemon && pokeSprite && shinySprite">
                 <h2>Normal</h2>
                 <hr>
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.idPokedex}}.png" alt="">
+                <img src="{{pokeSprite}}" alt="">
                 <h2>Variocolor</h2>
                 <hr>
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/{{pokemon.idPokedex}}.png" alt="">
+                <img src="{{shinySprite}}" alt="">
             </ng-container>
         </div>
         <div id="info-container">
@@ -37,7 +37,7 @@
                         <td>(X4) Muy débil a:</td>
                         <td>
                             <ng-container *ngFor="let sW of sWeak">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{sW.name}}.png" alt="" [routerLink]="['/pokemon/list/type', sW.idType]">
+                                <img src="{{sW.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', sW.idType]">
                             </ng-container>
                         </td>
                     </tr>
@@ -45,7 +45,7 @@
                         <td>(X2) Débil a:</td>
                         <td>
                             <ng-container *ngFor="let w of weak">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{w.name}}.png" alt="" [routerLink]="['/pokemon/list/type', w.idType]">
+                                <img src="{{w.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', w.idType]">
                             </ng-container>
                         </td>
                     </tr>
@@ -53,7 +53,7 @@
                         <td>(X1) Normal a:</td>
                         <td>
                             <ng-container *ngFor="let dN of dNormal">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{dN.name}}.png" alt="" [routerLink]="['/pokemon/list/type', dN.idType]">
+                                <img src="{{dN.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', dN.idType]">
                             </ng-container>
                         </td>
                     </tr>
@@ -61,7 +61,7 @@
                         <td>(X1/2) Resistente a:</td>
                         <td>
                             <ng-container *ngFor="let r of res">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{r.name}}.png" alt="" [routerLink]="['/pokemon/list/type', r.idType]">
+                                <img src="{{r.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', r.idType]">
                             </ng-container>
                         </td>
                     </tr>
@@ -69,7 +69,7 @@
                         <td>(X1/4) Muy resistente a:</td>
                         <td>
                             <ng-container *ngFor="let sR of sRes">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{sR.name}}.png" alt="" [routerLink]="['/pokemon/list/type', sR.idType]">
+                                <img src="{{sR.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', sR.idType]">
                             </ng-container>
                         </td>
                     </tr>
@@ -77,7 +77,7 @@
                         <td>(X0) Inmune a:</td>
                         <td>
                             <ng-container *ngFor="let i of inm">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{i.name}}.png" alt="" [routerLink]="['/pokemon/list/type', i.idType]">
+                                <img src="{{i.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', i.idType]">
                             </ng-container>
                         </td>
                     </tr>
@@ -88,7 +88,7 @@
                         <td>(X2) Efectivo a:</td>
                         <td>
                             <ng-container *ngFor="let e of efc">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{e.name}}.png" alt="" [routerLink]="['/pokemon/list/type', e.idType]">
+                                <img src="{{e.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', e.idType]">
                             </ng-container>
                         </td>
                     </tr>
@@ -96,7 +96,7 @@
                         <td>(X1) Normal a:</td>
                         <td>
                             <ng-container *ngFor="let a of aNormal">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{a.name}}.png" alt="" [routerLink]="['/pokemon/list/type', a.idType]">
+                                <img src="{{a.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', a.idType]">
                             </ng-container>
                         </td>
                     </tr>
@@ -104,7 +104,7 @@
                         <td>(X1/2) Poco efectivo a:</td>
                         <td>
                             <ng-container *ngFor="let nE of nEfc">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{nE.name}}.png" alt="" [routerLink]="['/pokemon/list/type', nE.idType]">
+                                <img src="{{nE.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', nE.idType]">
                             </ng-container>
                         </td>
                     </tr>
@@ -112,7 +112,7 @@
                         <td>(X0) Sin daño a:</td>
                         <td>
                             <ng-container *ngFor="let nD of nDam">
-                                <img src="https://play.pokemonshowdown.com/sprites/types/{{nD.name}}.png" alt="" [routerLink]="['/pokemon/list/type', nD.idType]">
+                                <img src="{{nD.typeUrl}}" alt="" [routerLink]="['/pokemon/list/type', nD.idType]">
                             </ng-container>
                         </td>
                     </tr>

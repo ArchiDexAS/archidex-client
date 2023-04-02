@@ -114,4 +114,36 @@ export class PokemonService {
       })
     );
   }
+
+  pokeImage(id: number): Observable<string> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("idPokedex", id);
+    return this.http.get<any>(`http://10.43.101.95:8000/api/images/getPokemonImage/`, { params: queryParams }).pipe(
+      map(datos => {
+        return datos.url;
+      })
+    );
+  }
+
+  shinyImage(id: number): Observable<string> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("idPokedex", id);
+    return this.http.get<any>(`http://10.43.101.95:8000/api/images/getPokemonShinyImage/`, { params: queryParams }).pipe(
+      map(datos => {
+        return datos.url;
+      })
+    );
+  }
+
+  typeImage(type: string): Observable<string> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("typeName", type);
+    return this.http.get<any>(`http://10.43.101.95:8000/api/images/getTypeImage/`, { params: queryParams }).pipe(
+      map(datos => {
+        return datos.url;
+      })
+    );
+  }
+
 }
+
