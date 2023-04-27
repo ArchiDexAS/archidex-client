@@ -16,14 +16,21 @@
     "@angular-devkit/core" "15.2.6"
     rxjs "6.6.7"
 
-"@angular-devkit/build-angular@^15.2.6":
-  version "15.2.6"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-15.2.6.tgz#15f15c27eed465c8becc7a313d4909a7ee66f959"
+"@angular-devkit/architect@0.1502.7":
+  version "0.1502.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1502.7.tgz#13fd0040dce4149ad3c1eaefc787f0de95e1cf3b"
+  dependencies:
+    "@angular-devkit/core" "15.2.7"
+    rxjs "6.6.7"
+
+"@angular-devkit/build-angular@^15.2.7":
+  version "15.2.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-15.2.7.tgz#f31aaae021adc2af28a4281aa00f992a922353e3"
   dependencies:
     "@ampproject/remapping" "2.2.0"
-    "@angular-devkit/architect" "0.1502.6"
-    "@angular-devkit/build-webpack" "0.1502.6"
-    "@angular-devkit/core" "15.2.6"
+    "@angular-devkit/architect" "0.1502.7"
+    "@angular-devkit/build-webpack" "0.1502.7"
+    "@angular-devkit/core" "15.2.7"
     "@babel/core" "7.20.12"
     "@babel/generator" "7.20.14"
     "@babel/helper-annotate-as-pure" "7.18.6"
@@ -35,7 +42,7 @@
     "@babel/runtime" "7.20.13"
     "@babel/template" "7.20.7"
     "@discoveryjs/json-ext" "0.5.7"
-    "@ngtools/webpack" "15.2.6"
+    "@ngtools/webpack" "15.2.7"
     ansi-colors "4.1.3"
     autoprefixer "10.4.13"
     babel-loader "9.1.2"
@@ -83,16 +90,26 @@
   optionalDependencies:
     esbuild "0.17.8"
 
-"@angular-devkit/build-webpack@0.1502.6":
-  version "0.1502.6"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.1502.6.tgz#5fb444fc54d816e57458d36f3c280b522e5f5cfc"
+"@angular-devkit/build-webpack@0.1502.7":
+  version "0.1502.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-webpack/-/build-webpack-0.1502.7.tgz#54042110f83c6543847ce842342269d5133ef286"
   dependencies:
-    "@angular-devkit/architect" "0.1502.6"
+    "@angular-devkit/architect" "0.1502.7"
     rxjs "6.6.7"
 
 "@angular-devkit/core@15.2.6":
   version "15.2.6"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-15.2.6.tgz#9118faadbc5e3613283da1774826d2b41883330f"
+  dependencies:
+    ajv "8.12.0"
+    ajv-formats "2.1.1"
+    jsonc-parser "3.2.0"
+    rxjs "6.6.7"
+    source-map "0.7.4"
+
+"@angular-devkit/core@15.2.7":
+  version "15.2.7"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-15.2.7.tgz#c8a4de89fb0b5398b879621126d3c772fc6167b4"
   dependencies:
     ajv "8.12.0"
     ajv-formats "2.1.1"
@@ -1908,9 +1925,9 @@
     "@material/theme" "15.0.0-canary.684e33d25.0"
     tslib "^2.1.0"
 
-"@ngtools/webpack@15.2.6":
-  version "15.2.6"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-15.2.6.tgz#9000eafbcb74508ad8300d4f92cc3640f86f0810"
+"@ngtools/webpack@15.2.7":
+  version "15.2.7"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-15.2.7.tgz#872e1c68e5ab860866f191235b290c15952053f6"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
